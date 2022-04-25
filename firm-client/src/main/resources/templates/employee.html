@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+</head>
+<body>
+<div class="col-md-10 mx-auto col-lg-5">
+    <form method="get" th:action="@{/employees}">
+        <button type="submit">Back</button>
+    </form>
+    <hr>
+    <hr>
+    <div>id:</div>
+    <div th:text="${employee.ID}"></div>
+    <hr>
+    <div>Name:</div>
+    <div th:text="${employee.firstName}"></div>
+    <hr>
+    <div>Fathername:</div>
+    <div th:text="${employee.fatherName}"></div>
+    <hr>
+    <div>Lastname:</div>
+    <div th:text="${employee.lastName}"></div>
+    <hr>
+    <div>Department:</div>
+    <div th:if="${department.isPresent()}" th:text="${department.get().name}"></div>
+    <hr>
+    <div>Position:</div>
+    <div th:text="${employee.position}"></div>
+    <hr>
+    <div>Salary:</div>
+    <div th:text="${employee.salary}"></div>
+    <hr>
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <form method="get" th:action="@{/employees/update_employee/form/{id}(id=${employee.ID})}">
+                    <button type="submit">Update</button>
+                </form>
+            </th>
+            <th>
+                <form method="post" th:action="@{/employees/delete/{id}(id=${employee.ID})}">
+                    <button type="submit">Delete</button>
+                </form>
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

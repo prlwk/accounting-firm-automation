@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update employee</title>
+</head>
+<body>
+<div>
+    <form method="get" th:action="@{/employees/{id}(id=${employee.ID})}">
+        <button type="submit">Back</button>
+    </form>
+    <hr>
+    <form method="post" th:action="@{/employees/update/{id}(id=${employee.ID})}" th:object="${employeeForm}">
+        <div>Name:</div>
+        <input type="text" name="firstName" placeholder="Name" th:value="${employeeForm.firstName}">
+        <br>
+        <div>Fathername:</div>
+        <input type="text" name="fatherName" placeholder="Fathername" th:value="${employeeForm.fatherName}">
+        <br>
+        <div>Lastname:</div>
+        <input type="text" name="lastName" placeholder="LastName" th:value="${employeeForm.lastName}">
+        <br>
+        <div>
+            <label>Department:</label>
+            <br>
+            <select name="departmentID">
+                <option th:if="${currentDepartment.isPresent()}" th:text="${currentDepartment.get.name}"
+                        th:value="${currentDepartment.get().ID}" hidden></option>
+                <option th:if="${!currentDepartment.isPresent()}" value="none" selected disabled hidden>
+                    Select a department
+                </option>
+                <option th:each="deparment : ${departments}"
+                        th:value="${deparment.ID}"
+                        th:text="${deparment.name}">
+                </option>
+            </select>
+        </div>
+        <br>
+        <div>Position:</div>
+        <input type="text" name="position" placeholder="Position" th:value="${employeeForm.position}">
+        <br>
+        <div>Salary:</div>
+        <input type="number" name="salary" placeholder="Salary" th:value="${employeeForm.salary}">
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

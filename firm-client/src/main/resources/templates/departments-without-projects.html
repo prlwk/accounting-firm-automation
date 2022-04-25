@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments without projects</title>
+</head>
+<body>
+<form method="get" th:action="@{/departments}">
+    <button type="submit">Back</button>
+</form>
+<hr>
+<div>
+    <table border="1" bordercolor="grey">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department : ${departments}">
+            <td th:text="${department.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+</body>
+</html>

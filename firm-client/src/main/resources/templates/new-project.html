@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New project</title>
+</head>
+<body>
+<div>
+    <form method="get" th:action="@{/projects}">
+        <button type="submit">Back</button>
+    </form>
+    <hr>
+    <form method="post" th:action="@{/projects/new_project/add}" th:object="${projectForm}">
+        <input type="text" name="name" placeholder="Name">
+        <br>
+        <input type="number" name="cost" placeholder="Cost">
+        <br>
+        <div>
+            <label>Department:</label>
+            <select name="departmentID">
+                <option value="none" selected disabled hidden>
+                    Select a department
+                </option>
+                <option th:each="deparment : ${departments}"
+                        th:value="${deparment.ID}"
+                        th:text="${deparment.name}">
+                </option>
+            </select>
+        </div>
+        <div>
+            Start date:
+            <input type="date" name="dateBegin" placeholder="Start Date">
+            <br>
+        </div>
+        <div>
+            Finish date:
+            <input type="date" name="dateEnd" placeholder="Finish Date">
+            <br>
+        </div>
+        <div>
+            Real finish date
+            <input type="date" name="dateEndReal" placeholder="Real Finish Date">
+            <br>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</div>
+</body>
+</html>

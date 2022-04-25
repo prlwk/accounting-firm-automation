@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update project</title>
+</head>
+<body>
+<div>
+    <form method="get" th:action="@{/projects/{id}(id=${project.ID})}">
+        <button type="submit">Back</button>
+    </form>
+    <hr>
+    <form method="post" th:action="@{/projects/update/{id}(id=${project.ID})}" th:object="${projectForm}">
+        <div>Name:</div>
+        <input type="text" name="name" placeholder="Name" th:value="${projectForm.name}">
+        <br>
+        <div>Cost:</div>
+        <input type="number" name="cost" placeholder="Cost" th:value="${projectForm.cost}">
+        <br>
+        <div>
+            <label>Department:</label>
+            <select name="departmentID">
+                <option th:text="${currentDepartment.name}" th:value="${currentDepartment.ID}" hidden></option>
+                <option th:each="deparment : ${departments}"
+                        th:value="${deparment.ID}"
+                        th:text="${deparment.name}">
+                </option>
+            </select>
+        </div>
+        <div>
+            Start date:
+            <input type="date" name="dateBegin" placeholder="Start Date" th:value="${dateBegin}">
+            <br>
+        </div>
+        <div>
+            Finish date:
+            <input type="date" name="dateEnd" placeholder="Finish Date" th:value="${dateEnd}">
+            <br>
+        </div>
+        <div>
+            Real finish date
+            <input type="date" name="dateEndReal" placeholder="Real Finish Date" th:value="${dateEndReal}">
+            <br>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

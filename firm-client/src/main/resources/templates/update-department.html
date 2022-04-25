@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update department</title>
+</head>
+<body>
+<div>
+    <form method="get" th:action="@{/departments/{id}(id=${department.ID})}" enctype="multipart/form-data">
+        <button type="submit">Back</button>
+    </form>
+    <hr>
+    <form method="post" th:action="@{/departments/update/{id}(id=${department.ID})}" th:object="${departmentForm}">
+        <div>Name:</div>
+        <input type="text" name="name" placeholder="Name" th:value="${departmentForm.name}">
+        <br>
+        <button type="submit">Add</button>
+    </form>
+</div>
+</body>
+</html>

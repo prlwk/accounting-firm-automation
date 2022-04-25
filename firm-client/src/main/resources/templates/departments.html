@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments</title>
+</head>
+<body>
+<form method="get" th:action="@{/}">
+    <button type="submit">Back</button>
+</form>
+<hr>
+<div>
+    <table border="1" bordercolor="grey">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department : ${departments}">
+            <td th:text="${department.name}"></td>
+            <td th:href="@{/departments/${department.ID}}">
+                <a th:href="@{/departments/{id}(id=${department.ID})}">
+                    <div>
+                        See more
+                    </div>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<form method="get" th:action="@{/departments/new_department/form}">
+    <button type="submit">Add new department</button>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <form method="get" th:action="@{/departments/departments_without/employees}">
+                <button type="submit">See departments without employees</button>
+            </form>
+        </th>
+        <th>
+            <form method="get" th:action="@{/departments/departments_without/projects}">
+                <button type="submit">See departments without projects</button>
+            </form>
+        </th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

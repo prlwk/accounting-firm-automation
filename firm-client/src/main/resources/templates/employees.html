@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+</head>
+<body>
+<form method="get" th:action="@{/}">
+    <button type="submit">Back</button>
+</form>
+<hr>
+<div>
+    <table border="1" bordercolor="grey">
+        <thead>
+        <tr>
+            <th>Lastname</th>
+            <th>Firstname</th>
+            <th>FatherName</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.fatherName}"></td>
+            <td th:href="@{/employees/${employee.ID}}">
+                <a th:href="@{/employees/{id}(id=${employee.ID})}">
+                    <div>
+                        See more
+                    </div>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<form method="get" th:action="@{/employees/new_employee/form}">
+    <button type="submit">Add new employee</button>
+</form>
+<hr>
+<form method="get" th:action="@{/employees/employees_without/department}">
+    <button type="submit">See employees without department</button>
+</form>
+<hr>
+</body>
+</html>

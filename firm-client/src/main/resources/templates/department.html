@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department</title>
+</head>
+<body>
+<div class="col-md-10 mx-auto col-lg-5">
+    <form method="get" th:action="@{/departments}">
+        <button type="submit">Back</button>
+    </form>
+    <hr>
+    <div>id:</div>
+    <div th:text="${department.ID}"></div>
+    <hr>
+    <div>Name:</div>
+    <div th:text="${department.name}"></div>
+    <hr>
+    <div>Employees in this department:</div>
+    <table border="1" bordercolor="grey">
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.position}"></td>
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.fatherName}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <form method="get" th:action="@{/departments/update_department/form/{id}(id=${department.ID})}">
+                <button type="submit">Update</button>
+            </form>
+        </th>
+        <th>
+            <form method="post" th:action="@{/departments/delete/{id}(id=${department.ID})}">
+                <button type="submit">Delete</button>
+            </form>
+        </th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

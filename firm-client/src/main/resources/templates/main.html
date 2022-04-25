@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div>
+    <h2>COMPANY<br></h2>
+</div>
+
+<section>
+    <div>
+        <h2>Employees<br></h2>
+        <a th:href="@{/employees}">Show Me</a>
+    </div>
+    <div>
+        <h2>Projects<br></h2>
+        <a th:href="@{/projects}">Show Me</a>
+    </div>
+    <div>
+        <h2>Departments<br></h2>
+        <a th:href="@{/departments}">Show Me</a>
+    </div>
+</section>
+<div>
+   <br>
+    <form method="get" th:action="@{/auth/signin}">
+        <button type="submit">SIGN IN</button>
+    </form>
+</div>
+</body>
+</html>

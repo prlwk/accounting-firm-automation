@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<div>
+    <h2>This user does not exist or password is invalid!<br></h2>
+    <form method="get" th:action="@{/auth/signin}">
+        <button type="submit">Try again</button>
+    </form>
+</div>
+</body>
+</html>

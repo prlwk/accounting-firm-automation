@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+<body>
+<form method="get" th:action="@{/}">
+    <button type="submit">Back</button>
+</form>
+<hr>
+<div>
+    <table border="1" bordercolor="grey">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${projects}">
+            <td th:text="${project.name}"></td>
+            <td th:text="${project.department.name}"></td>
+            <td th:href="@{/projects/${project.ID}}">
+                <a th:href="@{/projects/{id}(id=${project.ID})}">
+                    <div>
+                        See more
+                    </div>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<form method="get" th:action="@{/projects/new_project/form}">
+    <button type="submit">Add new project</button>
+</form>
+<hr>
+</body>
+</html>
